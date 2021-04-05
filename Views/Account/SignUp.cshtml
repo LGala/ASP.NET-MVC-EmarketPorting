@@ -1,0 +1,45 @@
+﻿@model Emarket.ViewModels.Account.SignUpViewModel
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="@Url.Content("~/Content/Css/Account/SignUp.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="button">
+        @Html.ActionLink("HOME", "Index", "Home", new { id = "" }, new { @class = "btn1" })
+        @Html.ActionLink("BUY", "Index", "Products", new { id = "" }, new { @class = "btn2" })
+        @Html.ActionLink("SIGN IN", "SignIn", "Account", new { id = "" }, new { @class = "btn3" })
+    </div>
+    <div class="container">
+        <img src="@Url.Content("~/Content/Images/person_logo.png")">
+        @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+        {
+            <div class="person_in">
+                @Html.TextBoxFor(viewModel => viewModel.Name, new { placeholder = "insert your name here" })
+            </div>
+            <div class="person_in">
+                @Html.TextBoxFor(viewModel => viewModel.Surname, new { placeholder = "insert your surname here" })
+            </div>
+            <div class="data_in">
+                @Html.TextBoxFor(viewModel => viewModel.Birthdate, new { type = "date"})
+            </div>
+            <div class="email_in">
+                @Html.TextBoxFor(viewModel => viewModel.Email, new { placeholder = "insert a valid mail address here" })
+            </div>
+            <div class="pass_in">
+                @Html.PasswordFor(viewModel => viewModel.Password, new { placeholder = "insert your password here (> 7 char)" })
+            </div>
+            <div class="controlla_pass_in">
+                @Html.PasswordFor(viewModel => viewModel.ReinsertedPassword, new { placeholder = "reinsert your password here" })
+            </div>
+            <input type="submit" id="invia" name="invia" value="sign up"><br>
+        }
+    </div>
+</body>
+</html>

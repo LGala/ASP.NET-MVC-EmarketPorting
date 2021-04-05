@@ -1,0 +1,56 @@
+﻿@model Emarket.ViewModels.Account.SignInViewModel
+@{
+    ViewBag.Title = "SignIn";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="@Url.Content("~/Content/Css/Account/SignIn.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    @*<?php
+            function genera_avviso(){
+                include "../connessione.php";
+        
+                if(isset($_REQUEST["bisogna_accedere
+                    $id_prod = $_REQUEST["id_prod"];
+                    session_start();
+                    $_SESSION["id_prod"] = $id_prod;
+                    echo "per acquistare devi prima accedere con il tuo account";
+                }
+        
+                mysqli_close($conn);
+            }
+        ?>*@
+</head>
+<body>
+    <div class="button">
+        @Html.ActionLink("HOME", "Index", "Home", new { id = "" }, new { @class = "btn1" })
+        @Html.ActionLink("BUY", "Index", "Products", new { id = "" }, new { @class = "btn2" })
+        @Html.ActionLink("SIGN UP", "SignUp", "Account", new { id = "" }, new { @class = "btn3" })
+    </div>
+    <div class="container">
+        <img src="@Url.Content("~/Content/Images/person_logo.png")">
+        @using (Html.BeginForm("SignIn", "Account", FormMethod.Post))
+        {
+            <div class="avviso">
+                <p>
+                    @ViewBag.communication
+                </p>
+            </div>
+            <div class="person_in">
+                @Html.TextBoxFor(viewModel => viewModel.Username, new { placeholder = "insert your username here" })
+            </div>
+            <div class="pass_in">
+                @Html.PasswordFor(viewModel => viewModel.Password, new { placeholder = "insert your password here" })
+            </div>
+            <input type="submit" id="invia" name="invia" value="sign in"><br>
+            @Html.ActionLink("did you lose your password?", "RecoverPassword", "Account", new { id = "" })
+            <font color="white">/</font>
+            @Html.ActionLink("do you want to change your password?", "ChangePassword", "Account", new { id = "" })
+        }
+    </div>
+</body>
+</html>
+
